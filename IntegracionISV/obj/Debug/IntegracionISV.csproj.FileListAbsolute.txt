@@ -5,7 +5,6 @@ C:\Users\Jonathan Avila\Documents\Visual Studio 2017\projects\IntegracionISV\Int
 C:\Users\Jonathan Avila\Documents\Visual Studio 2017\projects\IntegracionISV\IntegracionISV\bin\Debug\System.IO.Compression.ZipFile.dll
 C:\Users\Jonathan Avila\Documents\Visual Studio 2017\projects\IntegracionISV\IntegracionISV\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Jonathan Avila\Documents\Visual Studio 2017\projects\IntegracionISV\IntegracionISV\obj\Debug\IntegracionISV.csprojAssemblyReference.cache
-C:\Users\Jonathan Avila\Documents\Visual Studio 2017\projects\IntegracionISV\IntegracionISV\obj\Debug\IntegracionISV.csproj.CoreCompileInputs.cache
 C:\Users\Jonathan Avila\Documents\Visual Studio 2017\projects\IntegracionISV\IntegracionISV\obj\Debug\IntegracionISV.csproj.CopyComplete
 C:\Users\Jonathan Avila\Documents\Visual Studio 2017\projects\IntegracionISV\IntegracionISV\obj\Debug\IntegracionISV.exe
 C:\Users\Jonathan Avila\Documents\Visual Studio 2017\projects\IntegracionISV\IntegracionISV\obj\Debug\IntegracionISV.pdb

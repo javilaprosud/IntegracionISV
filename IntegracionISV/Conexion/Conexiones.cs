@@ -10,7 +10,7 @@ namespace IntegracionISV.Conexion
 {
     class Conexiones
     {
-        public string conexion_Prosud_BI = @"Data Source=192.168.1.68;Initial Catalog=PROSUD_BI;Max Pool Size=10024;user=sa;pwd=procesadora1";
+        public string conexion_Prosud_BI = @"Data Source=192.168.1.68;Initial Catalog=PROSUD_BI;Min Pool Size=0;Max Pool Size=10024;Pooling=true;user=sa;pwd=procesadora1";
         public string conexion_Procesadora_Analisis = @"Data Source=192.168.1.68;Initial Catalog=procesadora_analisis;user=sa;pwd=procesadora1";
         public string query_fechas = "select CONVERT(varchar,ParamFecha,120) as ParamFecha from ReprocesoSemanalParam";
         public string query_correo = "select * from VW_CargaISV";
@@ -57,6 +57,7 @@ namespace IntegracionISV.Conexion
                 cmd.CommandTimeout = 0;
                 cmd.ExecuteNonQuery();
             }
+            procesadora_analisis().Close();
         }
 
         public void SP_ReprocesoMensual()
@@ -80,18 +81,21 @@ namespace IntegracionISV.Conexion
                 cmd.Parameters.Add("@ano", SqlDbType.VarChar).Value = ano;
                 cmd.ExecuteNonQuery();
             }
+            procesadora_analisis().Close();
         }
 
         public void FLAG_1()
         {
             SqlCommand command = new SqlCommand(query_updateflag_1, procesadora_analisis());
             command.ExecuteReader();
+            procesadora_analisis().Close();
         }
 
         public void FLAG_0()
         {
             SqlCommand command = new SqlCommand(query_updateflag_0, procesadora_analisis());
             command.ExecuteReader();
+            procesadora_analisis().Close();
         }
 
         public string obtenerFlag()
@@ -106,7 +110,7 @@ namespace IntegracionISV.Conexion
                     flag = reader["FMEstado"].ToString();
                 }
             }
-
+            procesadora_analisis().Close();
             return flag; 
         }
     }

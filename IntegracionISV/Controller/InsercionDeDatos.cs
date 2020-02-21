@@ -37,7 +37,7 @@ namespace IntegracionISV.Controller
                 {
                     for (int i = 0; csvData.Rows.Count > i; i++)
                     {
-                        string query = "insert into ISV_Ventas (Fechas, Holding, Cadena, Zona, ZonaNielsen, Comuna, Supervisor, Mercaderista, Local, RutMercaderista, Linea, Categoria, Marca, SubCategoria, Descripcion, CodigoInterno, EAN, DUN, Vigencia, CodCadena, Unidades, ValoresCostoNeto, Cajas, ValVentaB2B, PVPIVA, Kilos, B2BPrecios) values ('" + csvData.Rows[i].ItemArray.GetValue(0).ToString() + "','" +
+                        string query = "insert into Prosud_BI.dbo.ISV_Ventas (Fechas, Holding, Cadena, Zona, ZonaNielsen, Comuna, Supervisor, Mercaderista, Local, RutMercaderista, Linea, Categoria, Marca, SubCategoria, Descripcion, CodigoInterno, EAN, DUN, Vigencia, CodCadena, Unidades, ValoresCostoNeto, Cajas, ValVentaB2B, PVPIVA, Kilos, B2BPrecios) values ('" + csvData.Rows[i].ItemArray.GetValue(0).ToString() + "','" +
                             csvData.Rows[i].ItemArray.GetValue(1).ToString() + "','" +
                             csvData.Rows[i].ItemArray.GetValue(2).ToString() + "','" +
                             csvData.Rows[i].ItemArray.GetValue(3).ToString() + "','" +
@@ -66,6 +66,7 @@ namespace IntegracionISV.Controller
                             csvData.Rows[i].ItemArray.GetValue(26).ToString() + "');";
                         SqlCommand command = new SqlCommand(query, cn.Prosud_BI_A());
                         command.ExecuteNonQuery();
+                        cn.Prosud_BI_A().Close();
                     }
                 }
             }

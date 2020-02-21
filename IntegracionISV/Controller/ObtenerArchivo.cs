@@ -151,6 +151,7 @@ namespace IntegracionISV.Controller
                     }
                 }
             }
+            cn.procesadora_analisis().Close();
         }
     }
 }

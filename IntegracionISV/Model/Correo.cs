@@ -18,8 +18,8 @@ namespace IntegracionISV.Model
 
         public Correo()
         {
-            this.emisor = "ti@prosud.cl";
-            this.emisorContraseña = "Kuh580921";
+            this.emisor = "procesos@prosud.cl";
+            this.emisorContraseña = "Masofejo.88";
             this.host = "smtp.office365.com";
             this.puerto = 587;
         }
