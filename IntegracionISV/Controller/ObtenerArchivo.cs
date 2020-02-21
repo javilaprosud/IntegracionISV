@@ -17,7 +17,7 @@ namespace IntegracionISV.Controller
         public void EliminacionArchivosComprimidos()
         {
             Model.Archivo arch = new Model.Archivo();
-
+            Conexion.Conexiones cn = new Conexion.Conexiones();
             arch.allFilesZip = Directory.GetFiles(arch.pathZip, "*.zip", SearchOption.AllDirectories);
             try
             {
@@ -25,9 +25,12 @@ namespace IntegracionISV.Controller
                 {
                     File.Delete(arch.allFilesZip[i]);
                 }
+                cn.EjecutarLog("Correcta Eliminacion", "OK ELIMINACION");
             }
             catch (Exception e)
             {
+               
+                cn.EjecutarLog(e.ToString(),"ERROR ELIMINACION" );              
                 EnviarCorreo cr = new EnviarCorreo();
                 cr.CorreoErrores("Se genero un error al momento de eliminar los archivos. "+e , "Error ISV Integracion");
             }
@@ -141,10 +144,13 @@ namespace IntegracionISV.Controller
                                 }
                                 Console.WriteLine(arch.link);
                             }
-
+                            cn.EjecutarLog("Correcto Proceso de archivos", "OK PROCESADO");
                         }
                         catch (WebException ex)
                         {
+                            cn.EjecutarLog(ex.ToString(), "ERROR PROCESAR ARCHIVOS");
+                            EnviarCorreo cr = new EnviarCorreo();
+                            cr.CorreoErrores("Se genero un error al momento de procesar los archivos. " + ex, "Error ISV Integracion");
                             Console.WriteLine(ex.Message);
                             Console.ReadKey();
                         }

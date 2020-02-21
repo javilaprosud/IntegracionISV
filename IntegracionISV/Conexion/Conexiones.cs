@@ -12,6 +12,7 @@ namespace IntegracionISV.Conexion
     {
         public string conexion_Prosud_BI = @"Data Source=192.168.1.68;Initial Catalog=PROSUD_BI;Min Pool Size=0;Max Pool Size=10024;Pooling=true;user=sa;pwd=procesadora1";
         public string conexion_Procesadora_Analisis = @"Data Source=192.168.1.68;Initial Catalog=procesadora_analisis;user=sa;pwd=procesadora1";
+        public string conexion_Procesadorabd = @"Data Source=192.168.1.69;Initial Catalog=prosudbd;user=sa;pwd=procesadora1";
         public string query_fechas = "select CONVERT(varchar,ParamFecha,120) as ParamFecha from ReprocesoSemanalParam";
         public string query_correo = "select * from VW_CargaISV";
         public string query_parametros = "select mes, ano from ParamAvanceMetas";
@@ -22,6 +23,13 @@ namespace IntegracionISV.Conexion
         public SqlConnection procesadora_analisis()
         {
             SqlConnection sql_conexion = new SqlConnection(conexion_Procesadora_Analisis); 
+            sql_conexion.Open();
+
+            return sql_conexion;
+        }
+        public SqlConnection procesadorabd()
+        {
+            SqlConnection sql_conexion = new SqlConnection(conexion_Procesadorabd);
             sql_conexion.Open();
 
             return sql_conexion;
@@ -58,6 +66,14 @@ namespace IntegracionISV.Conexion
                 cmd.ExecuteNonQuery();
             }
             procesadora_analisis().Close();
+        }
+
+        public string insercionLog()
+        {
+            string query_SP_Log;
+            query_SP_Log = "SP_LOG_ISV";
+            return query_SP_Log;
+
         }
 
         public void SP_ReprocesoMensual()
@@ -152,5 +168,18 @@ namespace IntegracionISV.Conexion
             procesadora_analisis().Close();
             return flag; 
         }
+
+        public void EjecutarLog(string info, string estado)
+        {
+            using (procesadora_analisis())
+            {
+                SqlCommand cmd = new SqlCommand(insercionLog(), procesadorabd());
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@info", SqlDbType.VarChar).Value = info;
+                cmd.Parameters.Add("@estado", SqlDbType.VarChar).Value = estado;
+                cmd.ExecuteNonQuery();
+            }
+        }
+
     }
 }
