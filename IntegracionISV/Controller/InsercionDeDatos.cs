@@ -37,35 +37,65 @@ namespace IntegracionISV.Controller
                 {
                     for (int i = 0; csvData.Rows.Count > i; i++)
                     {
-                        string query = "insert into Prosud_BI.dbo.ISV_Ventas (Fechas, Holding, Cadena, Zona, ZonaNielsen, Comuna, Supervisor, Mercaderista, Local, RutMercaderista, Linea, Categoria, Marca, SubCategoria, Descripcion, CodigoInterno, EAN, DUN, Vigencia, CodCadena, Unidades, ValoresCostoNeto, Cajas, ValVentaB2B, PVPIVA, Kilos, B2BPrecios) values ('" + csvData.Rows[i].ItemArray.GetValue(0).ToString() + "','" +
-                            csvData.Rows[i].ItemArray.GetValue(1).ToString() + "','" +
-                            csvData.Rows[i].ItemArray.GetValue(2).ToString() + "','" +
-                            csvData.Rows[i].ItemArray.GetValue(3).ToString() + "','" +
-                            csvData.Rows[i].ItemArray.GetValue(4).ToString() + "','" +
-                            csvData.Rows[i].ItemArray.GetValue(5).ToString() + "','" +
-                            csvData.Rows[i].ItemArray.GetValue(6).ToString() + "','" +
-                            csvData.Rows[i].ItemArray.GetValue(7).ToString() + "','" +
-                            csvData.Rows[i].ItemArray.GetValue(8).ToString() + "','" +
-                            csvData.Rows[i].ItemArray.GetValue(9).ToString() + "','" +
-                            csvData.Rows[i].ItemArray.GetValue(10).ToString() + "','" +
-                            csvData.Rows[i].ItemArray.GetValue(11).ToString() + "','" +
-                            csvData.Rows[i].ItemArray.GetValue(12).ToString() + "','" +
-                            csvData.Rows[i].ItemArray.GetValue(13).ToString() + "','" +
-                            csvData.Rows[i].ItemArray.GetValue(14).ToString() + "','" +
-                            csvData.Rows[i].ItemArray.GetValue(15).ToString() + "','" +
-                            csvData.Rows[i].ItemArray.GetValue(16).ToString() + "','" +
-                            csvData.Rows[i].ItemArray.GetValue(17).ToString() + "','" +
-                            csvData.Rows[i].ItemArray.GetValue(18).ToString() + "','" +
-                            csvData.Rows[i].ItemArray.GetValue(19).ToString() + "','" +
-                            csvData.Rows[i].ItemArray.GetValue(20).ToString() + "','" +
-                            csvData.Rows[i].ItemArray.GetValue(21).ToString() + "','" +
-                            csvData.Rows[i].ItemArray.GetValue(22).ToString() + "','" +
-                            csvData.Rows[i].ItemArray.GetValue(23).ToString() + "','" +
-                            csvData.Rows[i].ItemArray.GetValue(24).ToString() + "','" +
-                            csvData.Rows[i].ItemArray.GetValue(25).ToString() + "','" +
-                            csvData.Rows[i].ItemArray.GetValue(26).ToString() + "');";
-                        SqlCommand command = new SqlCommand(query, cn.Prosud_BI_A());
-                        command.ExecuteNonQuery();
+                        cn.SP_INSERT_Datos(
+                            csvData.Rows[i].ItemArray.GetValue(0).ToString(),
+                            csvData.Rows[i].ItemArray.GetValue(1).ToString() ,
+                            csvData.Rows[i].ItemArray.GetValue(2).ToString() ,
+                            csvData.Rows[i].ItemArray.GetValue(3).ToString() ,
+                            csvData.Rows[i].ItemArray.GetValue(4).ToString() ,
+                            csvData.Rows[i].ItemArray.GetValue(5).ToString() ,
+                            csvData.Rows[i].ItemArray.GetValue(6).ToString() ,
+                            csvData.Rows[i].ItemArray.GetValue(7).ToString() ,
+                            csvData.Rows[i].ItemArray.GetValue(8).ToString() ,
+                            csvData.Rows[i].ItemArray.GetValue(9).ToString() ,
+                            csvData.Rows[i].ItemArray.GetValue(10).ToString() ,
+                            csvData.Rows[i].ItemArray.GetValue(11).ToString() ,
+                            csvData.Rows[i].ItemArray.GetValue(12).ToString() ,
+                            csvData.Rows[i].ItemArray.GetValue(13).ToString() ,
+                            csvData.Rows[i].ItemArray.GetValue(14).ToString() ,
+                            csvData.Rows[i].ItemArray.GetValue(15).ToString() ,
+                            csvData.Rows[i].ItemArray.GetValue(16).ToString() ,
+                            csvData.Rows[i].ItemArray.GetValue(17).ToString() ,
+                            csvData.Rows[i].ItemArray.GetValue(18).ToString() ,
+                            csvData.Rows[i].ItemArray.GetValue(19).ToString() ,
+                            csvData.Rows[i].ItemArray.GetValue(20).ToString() ,
+                            csvData.Rows[i].ItemArray.GetValue(21).ToString() ,
+                            csvData.Rows[i].ItemArray.GetValue(22).ToString() ,
+                            csvData.Rows[i].ItemArray.GetValue(23).ToString() ,
+                            csvData.Rows[i].ItemArray.GetValue(24).ToString() ,
+                            csvData.Rows[i].ItemArray.GetValue(25).ToString() ,
+                            csvData.Rows[i].ItemArray.GetValue(26).ToString() );
+                        #region
+                        //string query = "insert into Prosud_BI.dbo.ISV_Ventas (Fechas, Holding, Cadena, Zona, ZonaNielsen, Comuna, Supervisor, Mercaderista, Local, RutMercaderista, Linea, Categoria, Marca, SubCategoria, Descripcion, CodigoInterno, EAN, DUN, Vigencia, CodCadena, Unidades, ValoresCostoNeto, Cajas, ValVentaB2B, PVPIVA, Kilos, B2BPrecios) values ('" + csvData.Rows[i].ItemArray.GetValue(0).ToString() + "','" +
+                        //    csvData.Rows[i].ItemArray.GetValue(1).ToString() + "','" +
+                        //    csvData.Rows[i].ItemArray.GetValue(2).ToString() + "','" +
+                        //    csvData.Rows[i].ItemArray.GetValue(3).ToString() + "','" +
+                        //    csvData.Rows[i].ItemArray.GetValue(4).ToString() + "','" +
+                        //    csvData.Rows[i].ItemArray.GetValue(5).ToString() + "','" +
+                        //    csvData.Rows[i].ItemArray.GetValue(6).ToString() + "','" +
+                        //    csvData.Rows[i].ItemArray.GetValue(7).ToString() + "','" +
+                        //    csvData.Rows[i].ItemArray.GetValue(8).ToString() + "','" +
+                        //    csvData.Rows[i].ItemArray.GetValue(9).ToString() + "','" +
+                        //    csvData.Rows[i].ItemArray.GetValue(10).ToString() + "','" +
+                        //    csvData.Rows[i].ItemArray.GetValue(11).ToString() + "','" +
+                        //    csvData.Rows[i].ItemArray.GetValue(12).ToString() + "','" +
+                        //    csvData.Rows[i].ItemArray.GetValue(13).ToString() + "','" +
+                        //    csvData.Rows[i].ItemArray.GetValue(14).ToString() + "','" +
+                        //    csvData.Rows[i].ItemArray.GetValue(15).ToString() + "','" +
+                        //    csvData.Rows[i].ItemArray.GetValue(16).ToString() + "','" +
+                        //    csvData.Rows[i].ItemArray.GetValue(17).ToString() + "','" +
+                        //    csvData.Rows[i].ItemArray.GetValue(18).ToString() + "','" +
+                        //    csvData.Rows[i].ItemArray.GetValue(19).ToString() + "','" +
+                        //    csvData.Rows[i].ItemArray.GetValue(20).ToString() + "','" +
+                        //    csvData.Rows[i].ItemArray.GetValue(21).ToString() + "','" +
+                        //    csvData.Rows[i].ItemArray.GetValue(22).ToString() + "','" +
+                        //    csvData.Rows[i].ItemArray.GetValue(23).ToString() + "','" +
+                        //    csvData.Rows[i].ItemArray.GetValue(24).ToString() + "','" +
+                        //    csvData.Rows[i].ItemArray.GetValue(25).ToString() + "','" +
+                        //    csvData.Rows[i].ItemArray.GetValue(26).ToString() + "');";
+                        //SqlCommand command = new SqlCommand(query, cn.Prosud_BI_A());
+                        //command.ExecuteNonQuery();
+                        #endregion
                         cn.Prosud_BI_A().Close();
                     }
                 }
